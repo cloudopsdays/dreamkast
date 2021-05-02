@@ -73,7 +73,7 @@ jobs:
       - name: Checkout dreamkast-infra
         uses: actions/checkout@v2
         with:
-          repository: cloudnativedaysjp/dreamkast-infra
+          repository: cloudopsdays/dreamkast-infra
           path: dreamkast-infra
           token:  ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
