@@ -78,7 +78,7 @@ jobs:
           token:  ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - name: Update Kubernetes resources
-        uses: cloudnativedaysjp/action-dreamkast-gitops@main
+        uses: cloudopsdays/action-dreamkast-gitops@main
         with:
           base_dir: dreamkast-infra
           app_template_dir: manifests/app/dreamkast/overlays/template
