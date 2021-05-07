@@ -26,7 +26,8 @@ jobs:
       - name: Build, tag, and push image to Amazon ECR
         id: ecr
         env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          #ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REGISTRY: public.ecr.aws/z5v6i5y3
           ECR_REPOSITORY: dreamkast-ecs
           DOCKER_BUILDKIT: 1
         run: |
