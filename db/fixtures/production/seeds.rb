@@ -19,7 +19,7 @@ EOS
 )
 
 ConferenceDay.seed(
-  {id: 1, date: "2020-08-27", start_time: "12:00", end_time: "20:00", conference_id: 1, internal: false},
+  {id: 1, date: "2021-08-27", start_time: "12:00", end_time: "20:00", conference_id: 1, internal: false},
 )
 
 
@@ -317,7 +317,7 @@ end
 [
   [1, 'circleci', 'sponsors/codt2021/circleci.png', 1],
   [2, 'f5', 'sponsors/codt2021/f5.png', 1],
-  [3, 'newrelic', 'sponsors/codt2021/circleci.png', 1],
+  [3, 'newrelic', 'sponsors/codt2021/newrelic.png', 1],
   [4, 'redhat', 'sponsors/codt2021/redhat.png', 1],
   [5, 'vmware', 'sponsors/codt2021/vmware.png', 1],
   [6, 'intellilink', 'sponsors/codt2021/intellilink.jpg', 1],

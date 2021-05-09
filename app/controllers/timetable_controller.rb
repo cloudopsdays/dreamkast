@@ -9,8 +9,8 @@ class TimetableController < ApplicationController
   end
 
   def index
-    @conference = Conference.includes(conference_days: :talks).includes(talks: :track).find_by(abbr: event_name)
-    @talks = @conference.talks.includes(:track).eager_load(:talk_category, :talk_difficulty).where(show_on_timetable: true)
+    @conference = Conference.includes(conference_days: :talks).includes(talks: :track).includes(talks: :speakers).find_by(abbr: event_name)
+    @talks = @conference.talks.includes(:track, :speaker).eager_load(:talk_category, :talk_difficulty).where(show_on_timetable: true)
     @talk_categories = TalkCategory.where(conference_id: @conference.id)
     @talk_difficulties = TalkDifficulty.where(conference_id: @conference.id)
 
@@ -28,10 +28,10 @@ class TimetableController < ApplicationController
   end
 
   def timetable_partial_name
-    if @params[:event] == 'cndo2021'
-      'timetable_cndo2021'
-    else
+    if @params[:event] == 'cndt2020'
       'timetable'
+    else
+      "timetable_#{@params[:event]}"
     end
   end
 end

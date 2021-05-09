@@ -8,7 +8,7 @@ Conference.seed(
     abbr: "codt2021",
     status: 0, # registered
     speaker_entry: 0,
-    attendee_entry: 0,
+    attendee_entry: 1,
     theme: "運用者に光を",
     copyright: '© Cloud Operator Days Tokyo 2021',
     privacy_policy: File.read(File.join(Rails.root, 'db/fixtures/production/privacy_policy.md')),
@@ -22,7 +22,7 @@ EOS
 )
 
 ConferenceDay.seed(
-  {id: 1, date: "2020-08-27", start_time: "12:00", end_time: "20:00", conference_id: 1, internal: false},
+  {id: 1, date: "2021-08-27", start_time: "12:00", end_time: "20:00", conference_id: 1, internal: false},
 )
 
 Industry.seed(
@@ -336,7 +336,7 @@ SponsorType.seed(
   [11, 'Gold', 'supermicro', 1],
   [12, 'Gold', 'juniper', 1],
   [13, 'Gold', 'yahoo', 1],
-  [14, 'Plaid', 'plaid', 1],
+  [14, 'Tool', 'plaid', 1],
 ].each do |sponsors_sponsor_type|
   id = sponsors_sponsor_type[0]
   sponsor_type = SponsorType.find_by(name: sponsors_sponsor_type[1], conference_id: sponsors_sponsor_type[3])
@@ -356,7 +356,7 @@ end
   [3, 'newrelic', 'sponsors/codt2021/circleci.png', 1],
   [4, 'redhat', 'sponsors/codt2021/redhat.png', 1],
   [5, 'vmware', 'sponsors/codt2021/vmware.png', 1],
-  [6, 'intellilink', 'sponsors/codt2021/intellilink.jpg', 1],
+  [6, 'intellilink', 'sponsors/codt2021/intellilink.png', 1],
   [7, 'casareal', 'sponsors/codt2021/casareal.png', 1],
   [8, 'canonical', 'sponsors/codt2021/canonical.png', 1],
   [9, 'axlbit', 'sponsors/codt2021/axlbit.png', 1],
@@ -442,11 +442,11 @@ Link.seed(
 )
 
 ChatMessage.seed(
-  {id: 1, body: "talk1: chat message 1", conference_id: 2, room_id: 101, room_type: 'talk', message_type: 0},
-  {id: 2, body: "talk1: chat message 2", conference_id: 2, room_id: 101, room_type: 'talk', message_type: 0},
-  {id: 3, body: "talk1: chat message 3", conference_id: 2, room_id: 101, room_type: 'talk', message_type: 1},
-  {id: 4, body: "talk6: chat message 3", conference_id: 2, room_id: 105, room_type: 'talk', message_type: 0},
-  {id: 5, body: "talk6: chat message 3", conference_id: 2, room_id: 105, room_type: 'talk', message_type: 1},
+  {id: 1, body: "talk1: chat message 1", conference_id: 1, room_id: 101, room_type: 'talk', message_type: 0},
+  {id: 2, body: "talk1: chat message 2", conference_id: 1, room_id: 101, room_type: 'talk', message_type: 0},
+  {id: 3, body: "talk1: chat message 3", conference_id: 1, room_id: 101, room_type: 'talk', message_type: 1},
+  {id: 4, body: "talk6: chat message 3", conference_id: 1, room_id: 105, room_type: 'talk', message_type: 0},
+  {id: 5, body: "talk6: chat message 3", conference_id: 1, room_id: 105, room_type: 'talk', message_type: 1},
 )
 
 ## Uncomment this if needed

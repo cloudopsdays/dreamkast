@@ -15,7 +15,7 @@ class Profiles::TalksController < ApplicationController
       RegisteredTalk.where(profile_id: @profile.id).delete_all
 
       if params[:talks].present?
-        if params[:event] == "cndo2021"
+        if ["cndo2021", "codt2021"].include? params[:event]
           params[:talks].each do |key, value|
             talk_id = key.to_i
             if talk = Talk.find(talk_id)

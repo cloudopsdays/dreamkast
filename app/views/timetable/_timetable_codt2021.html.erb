@@ -1,0 +1,47 @@
+<% @conference.conference_days.each do |conference_day| %>
+  <% tracks = @conference.tracks.map {|track| track.name } %>
+  <% unless conference_day.internal  %>
+  <section class="timetable">
+    <div class="grid" style="--rows: 1">
+      <h2>興味のあるセッションを選択してください</h2>
+    </div>
+  </section>
+  <section class="timetable">
+    <div class="grid" style="">
+      <% tracks.each_with_index do |track_name, n| %>
+        <div class="track <%= 'even' if n.zero? || n.even? %>" style="--track: <%= n %>"><%= "Track #{track_name}" %></div>
+      <% end %>
+      <% counter = {} %>
+      <% conference_day.talks.where(show_on_timetable: true).each do |talk| %>
+        <% counter[talk.track.number] = counter[talk.track.number].to_i + 1 %>
+        <div class="talk"
+          slot="<%= talk.slot_number %>"
+          style="--track: <%= talk.track.number - 1 %>;
+                 --row-start:<%= counter[talk.track.number] * 10 %> ;
+                 --row-end:<%=  counter[talk.track.number] * 10 + 10 %> ;"
+        >
+          <% if form %>
+          <label for="<%= "talks[#{talk.id}]" %>" class="checkbox-label">
+          <%= form.check_box "talks[#{talk.id}]", { talk_id: talk.id, checked: talks_checked?(talk.id)}, true, false %>
+          <% end %>
+
+            <div class="content <%= 'checked' if @current_user && talks_checked?(talk.id) %>" talk_id="<%= talk.id %>" track_number="<%= talk.track.number %>">
+              <h6>
+                  <span class="track_name"> <%= talk.track.name %>&nbsp;</span><%= talk.speakers.name %></span>
+              </h6>
+              <h5><%= link_to talk.title, talk_path(id: talk.id), remote: true %></h5>
+              <%= render 'timetable/talk_category_difficulty', talk: talk %>
+            </div>
+
+          <% if form %>
+          </label>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+  <% end %>
+<% end %>
+<% if form %>
+  <%= render 'timetable_footer', form: form, information: '視聴したいセッションを選択してください。同一時間帯に1セッションのみ選択可能ですが、選択していないセッションのアーカイブ視聴も可能です(一部除く)。' %>
+<% end %>
