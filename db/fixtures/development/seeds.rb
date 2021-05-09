@@ -4,7 +4,7 @@ DUMMY_TEXT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do ei
 Conference.seed(
   {
     id: 1,
-    name: "CloudNative Days Tokyo 2020",
+    name: "CloudOpsDays Tokyo 2021",
     abbr: "cndt2020",
     status: 2, # closed
     speaker_entry: 0,
