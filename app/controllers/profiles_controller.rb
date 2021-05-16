@@ -26,6 +26,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params.merge(conference_id: @conference.id))
     @profile.sub = @current_user[:extra][:raw_info][:sub]
     @profile.email = @current_user[:info][:email]
+    @occupations = OCCUPATIONS
 
     if @profile.save
       Agreement.create!(profile_id: @profile.id, form_item_id: 1, value: 1) if agreement_params["require_email"]
