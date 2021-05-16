@@ -2,7 +2,9 @@
 
 <div class="container">
   <h1 class="my-3 text-center">セッション一覧</h1>
+  <% if @current_user %>
   <h3 class="my-3 text-center">興味のあるセッションを選択してください</h3>
+  <% end %>
 </div>
 
 <% if @current_user %>
