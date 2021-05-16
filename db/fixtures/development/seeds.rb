@@ -355,7 +355,7 @@ end
 [
   [1, 'circleci', 'sponsors/codt2021/circleci.png', 1],
   [2, 'f5', 'sponsors/codt2021/f5.png', 1],
-  [3, 'newrelic', 'sponsors/codt2021/circleci.png', 1],
+  [3, 'newrelic', 'sponsors/codt2021/newrelic.png', 1],
   [4, 'redhat', 'sponsors/codt2021/redhat.png', 1],
   [5, 'vmware', 'sponsors/codt2021/vmware.png', 1],
   [6, 'intellilink', 'sponsors/codt2021/intellilink.png', 1],
@@ -363,7 +363,7 @@ end
   [8, 'canonical', 'sponsors/codt2021/canonical.png', 1],
   [9, 'axlbit', 'sponsors/codt2021/axlbit.png', 1],
   [10, 'ossl', 'sponsors/codt2021/ossl.png', 1],
-  [11, 'supermicro', 'sponsors/codt2021/supermicro.jpg', 1],
+  [11, 'supermicro', 'sponsors/codt2021/supermicro.png', 1],
   [12, 'juniper', 'sponsors/codt2021/juniper.png', 1],
   [13, 'yahoo', 'sponsors/codt2021/yahoo.png', 1],
   [14, 'plaid', 'sponsors/codt2021/plaid.png', 1],

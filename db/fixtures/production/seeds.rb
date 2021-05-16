@@ -319,12 +319,12 @@ end
   [3, 'newrelic', 'sponsors/codt2021/newrelic.png', 1],
   [4, 'redhat', 'sponsors/codt2021/redhat.png', 1],
   [5, 'vmware', 'sponsors/codt2021/vmware.png', 1],
-  [6, 'intellilink', 'sponsors/codt2021/intellilink.jpg', 1],
+  [6, 'intellilink', 'sponsors/codt2021/intellilink.png', 1],
   [7, 'casareal', 'sponsors/codt2021/casareal.png', 1],
   [8, 'canonical', 'sponsors/codt2021/canonical.png', 1],
   [9, 'axlbit', 'sponsors/codt2021/axlbit.png', 1],
   [10, 'ossl', 'sponsors/codt2021/ossl.png', 1],
-  [11, 'supermicro', 'sponsors/codt2021/supermicro.jpg', 1],
+  [11, 'supermicro', 'sponsors/codt2021/supermicro.png', 1],
   [12, 'juniper', 'sponsors/codt2021/juniper.png', 1],
   [13, 'yahoo', 'sponsors/codt2021/yahoo.png', 1],
   [14, 'plaid', 'sponsors/codt2021/plaid.png', 1],
@@ -337,10 +337,3 @@ end
     }
   )
 end
-
-Announcement.seed(
-#   {id: 1, conference_id: 1, publish_time: "2020-08-24 10:00:00", publish: true, body: <<'EOS'
-# 9/2（水）19:00-20:30に、プレイベントとして、CNDT2020 Rejektsを開催します！CNDT2020にお申込の方はどなたでもご参加できます！ぜひご視聴ください！,
-# EOS
-#   },
-)
