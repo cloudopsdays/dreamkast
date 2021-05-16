@@ -22,16 +22,21 @@
     </div>
   </div>
 
+<div class="form-row form-group">
+    <div class="col-12 col-md-6">
+      <%= form.label :last_name_kana, "姓(カナ)" %>*
+      <%= form.text_field :last_name_kana, required: true, class: "form-control", placeholder: "クラウド" %>
+    </div>
 
-
-  <div class="form-row form-group">
-    <%= form.label :industry_id, "業種" %>*
-    <%= form.collection_select :industry_id, Industry.all, :id, :name, {prompt: ""}, {class: "form-control", requierd: true} %>
+    <div class="col-12 col-md-6">
+      <%= form.label :first_name_kana, "名(カナ)" %>*
+      <%= form.text_field :first_name_kana, required: true, class: "form-control", placeholder: "タロウ" %>
+    </div>
   </div>
 
   <div class="form-row form-group">
     <%= form.label :occupation, "職種" %>*
-    <%= form.text_field :occupation, required: true, class: "form-control", placeholder: "SRE / インフラエンジニア / アプリケーション開発　など" %>
+    <%= form.select :occupation, @occupations, {prompt: ''}, {required: true, class: "form-control"} %>
   </div>
 
   <div class="form-row form-group">
@@ -42,11 +47,6 @@
   <div class="form-row form-group">
     <%= form.label :company_email, "勤務先メールアドレス" %>*
     <%= form.email_field :company_email, required: true, class: "form-control", placeholder: "mail@example.com" %>
-  </div>
-
-  <div class="form-row form-group">
-    <%= form.label :company_address, "勤務先住所" %>*
-    <%= form.text_field :company_address, required: true, class: "form-control", placeholder: "東京都港区○○" %>
   </div>
 
   <div class="form-row form-group">
@@ -67,45 +67,6 @@
   <% if action_name == "new" %>
   <div class="privacy_policy">
     <%= markdown @conference.privacy_policy %>
-
-    <% if @event == "cndt2020" %>
-    <h4>IBMおよびIBMの⼦会社、関連会社からの情報提供</h4>
-    <p>
-    IBMおよび<a href="https://www.ibm.com/ibm/jp/ja/keireki.pdf#subsidiaries" target="_blank">IBMの⼦会社、関連会社</a>から、製品、サービス、オファリングに関する情報をお送りさせていただく場合があります。
-    </p>
-    <p>
-    マーケティングに関する同意は、<a href="https://www.ibm.com/account/reg/jp-ja/signup?formid=urx-42537" target="_blank">opt-out request</a>を送信することにより、いつでも取り消すことができます。また、該当のEメール内の、購読を中⽌するためのリンクをクリックすることで、マーケティングに関するEメールの受信を中⽌することができます。 処理に関する詳しい情報は、<a href="https://www.ibm.com/privacy/jp/ja/" target="_blank">IBMプライバシー・ステートメント</a>をご覧ください。このフォームを送信することで、私はIBMプライバシー・ステートメントを読み、これを理解したものとします。
-    </p>
-    <div class="form-check">
-      <%= form.check_box :require_email, {class: "form-check-input"}, true, false %>
-      <label class="form-check-label" for="require_email">e-メールを希望する</label>
-    </div>
-    <div class="form-check">
-      <%= form.check_box :require_tel, {class: "form-check-input"}, true, false %>
-      <label class="form-check-label" for="require_tel">電話を希望する</label>
-    </div>
-    <div class="form-check">
-      <%= form.check_box :require_posting, {class: "form-check-input"}, true, false %>
-      <label class="form-check-label" for="require_posting">郵便を希望する</label>
-    </div>
-    <% end %>
-
-    <h4 class="mt-3">日本マイクロソフト株式会社/Microsoft Corporation</h4>
-    <p>
-    日本マイクロソフト株式会社/Microsoft Corporationから情報提供を希望される場合、申し込み者情報に記載いただいた内容を日本マイクロソフト株式会社/Microsoft Corporationへ提供させていただきます。利用目的は当該企業の製品・サービスに関する情報またはマーケティング活動に関する情報をお知らせすることです。個人情報の取り扱いにつきましては、日本マイクロソフト株式会社/Microsoft Corporationのプライバシーポリシーに準拠します
-    </p>
-    <div class="form-check">
-    <% if @event == "cndt2020" %>
-      <%= form.check_box :agree_ms, {class: "form-check-input"}, true, false %>
-      <label class="form-check-label" for="agree_ms">日本マイクロソフト株式会社/Microsoft Corporationへの個人情報提供に同意する</label>
-    <% elsif @event == "cndo2021" %>
-      <%= form.check_box :agree_ms_cndo2021, {class: "form-check-input"}, true, false %>
-      <label class="form-check-label" for="agree_ms">日本マイクロソフト株式会社/Microsoft Corporationへの個人情報提供に同意する</label>
-    <% end %>
-
-    </div>
-    <p>(<a href="https://privacy.microsoft.com/ja-jp/privacystatement/" target="_blank">プライバシーステートメント</a>)</p>
-    <p></p>
   </div>
   <% end %>
 
