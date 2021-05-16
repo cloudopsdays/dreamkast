@@ -20,8 +20,8 @@ jobs:
           aws-region: ap-northeast-1
 
       - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
+        run: |
+          docker login -u AWS -p $(aws ecr-public get-login-password --region us-east-1) public.ecr.aws
 
       - name: Build, tag, and push image to Amazon ECR
         id: ecr
@@ -37,10 +37,7 @@ jobs:
           echo SHA ${{ github.sha }}
           IMAGE_TAG=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && IMAGE_TAG=$(echo $IMAGE_TAG | sed -e 's/^v//')
-
-          if [ ! -e ${{ github.head_ref }} ]; then
-            IMAGE_TAG=${{ github.head_ref }}
-          fi
+          [[ -n ${{ github.head_ref }} ]] && IMAGE_TAG=${{ github.head_ref }}
 
           CACHE_NODE=$ECR_REGISTRY/$ECR_REPOSITORY:node-cache
           CACHE_FETCH_LIB=$ECR_REGISTRY/$ECR_REPOSITORY:fetch-lib-cache
@@ -61,9 +58,6 @@ jobs:
           docker build --target fetch-lib -t $CACHE_FETCH_LIB --build-arg=BUILDKIT_INLINE_CACHE=1  .
           docker build --target asset-compile -t $CACHE_COMPILE_CACHE --build-arg=BUILDKIT_INLINE_CACHE=1  .
 
-          docker login -u AWS -p $(aws ecr-public get-login-password --region us-east-1) public.ecr.aws
-
-          docker tag $IMAGE_WITH_TAG $IMAGE_WITH_SHA
           docker push $IMAGE_WITH_TAG
           docker push $IMAGE_WITH_SHA
           docker push $CACHE_NODE
