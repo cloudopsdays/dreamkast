@@ -299,7 +299,7 @@ SponsorType.seed(
   [11, 'Gold', 'supermicro', 1],
   [12, 'Gold', 'juniper', 1],
   [13, 'Gold', 'yahoo', 1],
-  [14, 'Plaid', 'plaid', 1],
+  [14, 'Tool', 'plaid', 1],
 ].each do |sponsors_sponsor_type|
   id = sponsors_sponsor_type[0]
   sponsor_type = SponsorType.find_by(name: sponsors_sponsor_type[1], conference_id: sponsors_sponsor_type[3])
