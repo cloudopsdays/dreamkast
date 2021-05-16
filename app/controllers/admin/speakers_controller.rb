@@ -45,7 +45,7 @@ class Admin::SpeakersController < ApplicationController
       else
         notice = message.join(" / ")
       end
-      redirect_to '/admin/speakers', notice: notice
+      redirect_to admin_speakers_path, notice: notice
     end
   end
 

@@ -2,5 +2,7 @@
   <%  if talk.talk_difficulty.present? && talk.talk_difficulty_id != 4 && talk.talk_category_id != 18 %>
     <%= tag.span(talk_difficulty(talk).name, class: "difficulty difficulty_#{talk_difficulty(talk).id}") %>
   <% end %>
+  <% if talk.talk_category_id %>
   <span class="difficulty category_<%= talk_category(talk).id %>"><%= talk_category(talk).name %></span>
+  <% end %>
 </div>
