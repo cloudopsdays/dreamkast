@@ -16,7 +16,7 @@
         <% unless event_name.nil? %>
           <% if @conference && (@conference.registered? || @conference.opened?) && @conference.attendee_entry_enabled? %>
             <% if logged_in? && @profile.present? %>
-              <li class="nav-item"><%= link_to "Dashboard", dashboard_path, class: "nav-link js-scroll-trigger" %></li>
+              <li class="nav-item"><%= link_to "ダッシュボード", dashboard_path, class: "nav-link js-scroll-trigger" %></li>
             <% end %>
           <% end %>
           <% unless controller_name == "profiles" && (action_name == "new" || action_name == "create") %>
@@ -25,14 +25,9 @@
             <% end %>
 
             <li class="nav-item dropdown">
-              <%= link_to "SessionList", '#', id: "navbarDropdown", class: 'nav-link', role: "button", 'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "false" %>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <% if @conference.present? && @conference.show_timetable_enabled? %>
-                  <%= link_to 'Timetable', timetables_path, class: "dropdown-item", data: {"turbolinks" => false} %>
-                  <div class="dropdown-divider"></div>
-                <% end %>
-                <%= link_to 'セッションリスト', talks_path, class: "dropdown-item", data: {"turbolinks" => false} %>
-              </div>
+              <% if @conference.present? && @conference.show_timetable_enabled? %>
+                <%= link_to 'セッション一覧', timetables_path, class: "nav-link", data: {"turbolinks" => false} %>
+              <% end %>
             </li>
 
             <% if event_name == 'cndt2020' %>
