@@ -88,10 +88,12 @@ Industry.seed(
 
 
 Track.seed(
-  { id: 1, number: 1, name: "CODT2021", conference_id: 1},
-  { id: 2, number: 2, name: "CNTOM2021", conference_id: 1}
+  { id: 1, number: 1, name: "大規模システム運用", conference_id: 1},
+  { id: 2, number: 2, name: "運用苦労話（しくじり、トラシュー）", conference_id: 1},
+  { id: 3, number: 3, name: "運用自動化（Dev/Ops、CI/CD）", conference_id: 1},
+  { id: 4, number: 4, name: "社内基盤（情シス、開発環境）", conference_id: 1},
+  { id: 5, number: 5, name: "CNTOM2021", conference_id: 1},
 )
-
 
 TalkCategory.seed(
   { id: 1,  conference_id: 1, name: "CI / CD"},
