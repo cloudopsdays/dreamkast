@@ -31,8 +31,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           DOCKER_BUILDKIT: 1
-          S3_REGION: "ap-northeast-1"
-          S3_BUCKET: "dummy"
+
         run: |
           echo REF ${{ github.ref }}
           echo HEAD REF ${{ github.head_ref }}

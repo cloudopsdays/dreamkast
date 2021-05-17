@@ -32,8 +32,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           DOCKER_BUILDKIT: 1
-          S3_REGION: "ap-northeast-1"
-          S3_BUCKET: "dummy"
+
         run: |
           echo REF ${{ github.ref }}
           echo HEAD REF ${{ github.head_ref }}
@@ -42,7 +41,7 @@ jobs:
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && IMAGE_TAG=$(echo $IMAGE_TAG | sed -e 's/^v//')
           [[ -n "${{ github.head_ref }}" ]] && IMAGE_TAG=${{ github.head_ref }}
 
-          bash ./build-container.sh $IMAGE_TAG ${{ github.sha }}
+          S3_BUCKET="dummy" bash ./build-container.sh $IMAGE_TAG ${{ github.sha }}
 
       - name: Checkout dreamkast-infra
         uses: actions/checkout@v2
