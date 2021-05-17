@@ -41,20 +41,20 @@ class Admin::TalksController < ApplicationController
 
   def bulk_insert_talks
     unless params[:file]
-      redirect_to '/admin/talks', notice: "アップロードするファイルを選択してください"
+      redirect_to admin_talks_url, notice: "アップロードするファイルを選択してください"
     else
       message = Talk.import(params[:file])
       notice = message.join(" / ")
-      redirect_to '/admin/talks', notice: notice
+      redirect_to admin_talks_url, notice: notice
     end
   end
 
   def bulk_insert_talks_speaker
     unless params[:file]
-      redirect_to '/admin/talks', notice: "アップロードするファイルを選択してください"
+      redirect_to admin_talks_url, notice: "アップロードするファイルを選択してください"
     else
       TalksSpeaker.import(params[:file])
-      redirect_to '/admin/talks', notice: 'CSVの読み込みが完了しました'
+      redirect_to admin_talks_url, notice: 'CSVの読み込みが完了しました'
     end
   end
 

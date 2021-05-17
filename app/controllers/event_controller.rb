@@ -5,8 +5,13 @@ class EventController < ApplicationController
   before_action :set_current_user, :set_profile, :set_speaker
 
   def show
-    @conference = Conference.includes(sponsor_types: {sponsors: :sponsor_attachment_logo_image}).order("sponsor_types.order ASC").find_by(abbr: event_name)
-    render event_view
+    if event_name == "codt2021"
+      redirect_to "https://cloudopsdays.com/"
+    else
+      @conference = Conference.includes(sponsor_types: {sponsors: :sponsor_attachment_logo_image}).order("sponsor_types.order ASC").find_by(abbr: event_name)
+      render event_view
+    end
+    
   end
 
   def set_current_user

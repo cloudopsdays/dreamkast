@@ -106,8 +106,8 @@ module ApplicationHelper
   end
 
   def event_js_path
-    if event_name == "cndo2021"
-      return "cndo2021"
+    if ["cndo2021", "codt2021"].include? event_name
+      return event_name
     else
       return "application"
     end
