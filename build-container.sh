@@ -9,11 +9,6 @@ CACHE_COMPILE_CACHE=$ECR_REGISTRY/$ECR_REPOSITORY:asset-compile-cache
 IMAGE_WITH_TAG=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 IMAGE_WITH_SHA=$ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA
 
-export S3_REGION="ap-northeast-1"
-export S3_BUCKET="dummy"
-export AWS_ACCESS_KEY_ID="dummy"
-export AWS_SECRET_ACCESS_KEY="dummy"
-
 docker build \
   --cache-from=$CACHE_NODE \
   --cache-from=$CACHE_FETCH_LIB \

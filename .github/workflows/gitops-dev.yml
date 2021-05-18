@@ -41,7 +41,7 @@ jobs:
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && IMAGE_TAG=$(echo $IMAGE_TAG | sed -e 's/^v//')
           [[ -n "${{ github.head_ref }}" ]] && IMAGE_TAG=${{ github.head_ref }}
 
-          S3_BUCKET="dummy" bash ./build-container.sh $IMAGE_TAG ${{ github.sha }}
+          ./build-container.sh $IMAGE_TAG ${{ github.sha }}
 
       - name: Checkout dreamkast-infra
         uses: actions/checkout@v2
