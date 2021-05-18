@@ -14,7 +14,7 @@ window.update_track = function(track){
         document.getElementById("video").contentWindow.location.replace("https://player.vimeo.com/video/" + track.video_id + "?autoplay=1&loop=0&autopause=0");
         document.getElementById("slido").contentWindow.location.replace(track.slido_id != "" ? `https://app.sli.do/event/${track.slido_id}` : "/cndt2020/tracks/blank?msg");
         document.getElementById("twitter").href = "http://twitter.com/share?url=https://event.cloudopsdays.com/codt2021/&related=@cloudopsdays&hashtags=CODT2021_" + track.track_name;
-        document.getElementById("twitter").innerHTML = "Twitterでつぶやく<br/>#CODT2021" + track.track_name;
+        document.getElementById("twitter").innerHTML = "Twitterでつぶやく<br/>#CODT2021_" + track.track_name;
         document.getElementById("title").innerHTML = track.title;
         document.getElementById("abstract").innerHTML = track.abstract;
         document.getElementById("speakers").innerHTML = track.speakers;
