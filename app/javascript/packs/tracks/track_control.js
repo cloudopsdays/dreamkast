@@ -3,8 +3,8 @@ window.update_track = function(track){
     if(track === undefined || track === null){
         document.getElementById("video").contentWindow.location.replace("https://player.vimeo.com/video/455128631?autoplay=1&loop=0&autopause=0");
         document.getElementById("slido").contentWindow.location.replace("/cndt2020/tracks/blank");
-        document.getElementById("twitter").href = "http://twitter.com/share?url=https://event.cloudnativedays.jp/cndt2020/&related=@cloudnativedays&hashtags=CNDT2020";
-        document.getElementById("twitter").innerHTML = "Twitterでつぶやく<br/>#CNDT2020";
+        document.getElementById("twitter").href = "http://twitter.com/share?url=https://event.cloudopsdays.com/codt2021/&related=@cloudopsdays&hashtags=CODT2021";
+        document.getElementById("twitter").innerHTML = "Twitterでつぶやく<br/>#CODT2021";
         document.getElementById("title").innerHTML = "放送開始までしばらくお待ちください";
         document.getElementById("abstract").innerHTML = "";
         document.getElementById("speakers").innerHTML = "";
@@ -13,8 +13,8 @@ window.update_track = function(track){
     }else{
         document.getElementById("video").contentWindow.location.replace("https://player.vimeo.com/video/" + track.video_id + "?autoplay=1&loop=0&autopause=0");
         document.getElementById("slido").contentWindow.location.replace(track.slido_id != "" ? `https://app.sli.do/event/${track.slido_id}` : "/cndt2020/tracks/blank?msg");
-        document.getElementById("twitter").href = "http://twitter.com/share?url=https://event.cloudnativedays.jp/cndt2020/&related=@cloudnativedays&hashtags=CNDT2020_" + track.track_name;
-        document.getElementById("twitter").innerHTML = "Twitterでつぶやく<br/>#CNDT2020_" + track.track_name;
+        document.getElementById("twitter").href = "http://twitter.com/share?url=https://event.cloudopsdays.com/codt2021/&related=@cloudopsdays&hashtags=CODT2021_" + track.track_name;
+        document.getElementById("twitter").innerHTML = "Twitterでつぶやく<br/>#CODT2021_" + track.track_name;
         document.getElementById("title").innerHTML = track.title;
         document.getElementById("abstract").innerHTML = track.abstract;
         document.getElementById("speakers").innerHTML = track.speakers;
