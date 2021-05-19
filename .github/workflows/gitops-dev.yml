@@ -89,27 +89,7 @@ jobs:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           repository: cloudopsdays/dreamkast-infra
           directory: dreamkast-infra
-          branch: development/dk-${{ github.event.pull_request.number }}
-
-      - name: Create and Merge Pull Request
-        uses: "actions/github-script@v2"
-        with:
-          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          script: |
-            const pr = await github.pulls.create({
-              owner: "cloudopsdays",
-              repo: "dreamkast-infra",
-              title: "Automated PR (development/dk-${{ github.event.pull_request.number }})",
-              body: "**this PR is automatically created & merged**",
-              head: "development/dk-${{ github.event.pull_request.number }}",
-              base: "main"
-            });
-            await github.pulls.merge({
-              owner: "cloudopsdays",
-              repo: "dreamkast-infra",
-              pull_number: pr.data.number,
-              merge_method: "merge",
-            });
+          branch: development/main
 
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v1
