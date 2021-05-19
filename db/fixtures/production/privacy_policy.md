@@ -55,4 +55,4 @@ Tel: 03-6435-8789 Fax: 03-6435-8790
 email: codt2021-office [at] e-side.co.jp
 お問い合せ時間：10:00-17:00（土・日・祝祭日を除く）
 
-Cloud Operator Days Tokyo 2021 を運営する株式会社イーサイドの「プライバシーポリシー」はこちらをご覧ください。
+Cloud Operator Days Tokyo 2021 を運営する株式会社イーサイドの「プライバシーポリシー」は [こちら](http://www.e-side.co.jp/policy.php)をご覧ください。
