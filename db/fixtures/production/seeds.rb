@@ -257,6 +257,13 @@ Sponsor.seed(
     conference_id: 1,
     url: "https://plaid.co.jp/"
   },
+  {
+    id: 15,
+    name: "インテル株式会社",
+    abbr: "intel",
+    conference_id: 1,
+    url: "https://www.intel.co.jp/"
+  },
 )
 
 SponsorType.seed(
@@ -300,8 +307,9 @@ SponsorType.seed(
   [10, 'Gold', 'ossl', 1],
   [11, 'Gold', 'supermicro', 1],
   [12, 'Gold', 'juniper', 1],
-  [13, 'Gold', 'yahoo', 1],
+  [13, 'Silver', 'yahoo', 1],
   [14, 'Tool', 'plaid', 1],
+  [15, 'GOld', 'intel', 1],
 ].each do |sponsors_sponsor_type|
   id = sponsors_sponsor_type[0]
   sponsor_type = SponsorType.find_by(name: sponsors_sponsor_type[1], conference_id: sponsors_sponsor_type[3])
@@ -330,6 +338,7 @@ end
   [12, 'juniper', 'sponsors/codt2021/juniper.png', 1],
   [13, 'yahoo', 'sponsors/codt2021/yahoo.png', 1],
   [14, 'plaid', 'sponsors/codt2021/plaid.png', 1],
+  [15, 'intel', 'sponsors/codt2021/intel.png', 1],
 ].each do |logo|
   SponsorAttachment.seed(
     { id: logo[0],
