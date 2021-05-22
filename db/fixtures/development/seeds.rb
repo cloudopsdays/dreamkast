@@ -337,7 +337,7 @@ SponsorType.seed(
   [10, 'Gold', 'ossl', 1],
   [11, 'Gold', 'supermicro', 1],
   [12, 'Gold', 'juniper', 1],
-  [13, 'Gold', 'yahoo', 1],
+  [13, 'Silver', 'yahoo', 1],
   [14, 'Tool', 'plaid', 1],
 ].each do |sponsors_sponsor_type|
   id = sponsors_sponsor_type[0]
