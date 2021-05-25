@@ -68,7 +68,16 @@
   <div class="privacy_policy">
     <%= markdown @conference.privacy_policy %>
   </div>
+
+  <br />
+  <p>主催者の提示する <a href="/codt2021/privacy" target="_blank">個人情報保護方針(プライバシー ポリシー)</a> をご確認のうえ、ご同意いただき お申し込みを確定してください。</p>
+
+  <div class="form-check">
+    <%= form.check_box :agreement, {required: true, class: "form-check-input"}, true, false %>
+    <label class="form-check-label" for="agreement">同意する</label>
+  </div>
   <% end %>
+  <br />
 
   <div class="form-row form-group justify-content-md-center py-20">
     <%= form.submit "登録", class: "btn btn-primary form-control" %>
