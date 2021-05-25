@@ -11,7 +11,7 @@
       <div class="track" track_number=4>社内基盤（情シス、開発環境）</div>
 
       <% counter = {} %>
-      <% conference_day.talks.where(show_on_timetable: true).each do |talk| %>
+      <% conference_day.talks.where(show_on_timetable: true).order(:order).each do |talk| %>
         <% next if talk.track == nil%>
         <% counter[talk.track.number] = counter[talk.track.number].to_i + 1 %>
         <div class="talk" slot="<%= talk.slot_number %>" style="--track: <%= talk.track.number %>;">

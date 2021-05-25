@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_29_075251) do
+ActiveRecord::Schema.define(version: 2021_05_25_100350) do
 
   create_table "access_logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name"
@@ -254,6 +254,7 @@ ActiveRecord::Schema.define(version: 2021_04_29_075251) do
     t.string "document_url"
     t.boolean "show_on_timetable"
     t.integer "talk_time_id"
+    t.integer "order"
     t.index ["talk_category_id"], name: "index_talks_on_talk_category_id"
     t.index ["talk_difficulty_id"], name: "index_talks_on_talk_difficulty_id"
   end
