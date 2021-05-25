@@ -341,7 +341,6 @@ end
   [12, 'juniper', 'sponsors/codt2021/juniper.png', 1],
   [13, 'yahoo', 'sponsors/codt2021/yahoo.png', 1],
   [14, 'plaid', 'sponsors/codt2021/plaid.png', 1],
-
   [15, 'intel', 'sponsors/codt2021/intel.png', 1],
 ].each do |logo|
   SponsorAttachment.seed(
