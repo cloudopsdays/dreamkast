@@ -118,6 +118,7 @@ TalkCategory.seed(
   { id: 19, conference_id: 1, name: "教育/育成"},
   { id: 20, conference_id: 1, name: "その他"},
   { id: 21, conference_id: 1, name: "Keynote"},
+  { id: 22, conference_id: 1, name: "IT culture"},
 )
 
 TalkDifficulty.seed(
