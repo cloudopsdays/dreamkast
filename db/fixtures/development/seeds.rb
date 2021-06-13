@@ -304,6 +304,20 @@ Sponsor.seed(
     conference_id: 1,
     url: "https://www.intel.co.jp/"
   },
+  {
+    id: 16,
+    name: "Datadog Inc.",
+    abbr: "datadog",
+    conference_id: 1,
+    url: "https://www.datadoghq.com/ja"
+  },
+  {
+    id: 17,
+    name: "PagerDuty",
+    abbr: "pagerduty",
+    conference_id: 1,
+    url: "https://ja.pagerduty.com/"
+  },
 )
 
 SponsorType.seed(
@@ -349,7 +363,9 @@ SponsorType.seed(
   [12, 'Gold', 'juniper', 1],
   [13, 'Silver', 'yahoo', 1],
   [14, 'Tool', 'plaid', 1],
-  [15, 'GOld', 'intel', 1],
+  [15, 'Gold', 'intel', 1],
+  [16, 'Gold', 'datadog', 1],
+  [17, 'Platinum', 'pagerduty', 1],
 ].each do |sponsors_sponsor_type|
   id = sponsors_sponsor_type[0]
   sponsor_type = SponsorType.find_by(name: sponsors_sponsor_type[1], conference_id: sponsors_sponsor_type[3])
@@ -379,6 +395,8 @@ end
   [13, 'yahoo', 'sponsors/codt2021/yahoo.png', 1],
   [14, 'plaid', 'sponsors/codt2021/plaid.png', 1],
   [15, 'intel', 'sponsors/codt2021/intel.png', 1],
+  [16, 'datadog', 'sponsors/codt2021/datadog.png', 1],
+  [17, 'pagerduty', 'sponsors/codt2021/pagerduty.png', 1],
 ].each do |logo|
   SponsorAttachment.seed(
     { id: logo[0],
