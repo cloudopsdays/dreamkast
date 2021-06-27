@@ -335,7 +335,7 @@ SponsorType.seed(
   sponsor_type = SponsorType.find_by(name: sponsors_sponsor_type[1], conference_id: sponsors_sponsor_type[3])
   sponsor = Sponsor.find_by(abbr: sponsors_sponsor_type[2], conference_id: sponsors_sponsor_type[3])
   SponsorsSponsorType.seed({id: id, sponsor_type_id: sponsor_type.id, sponsor_id: sponsor.id})
-  if sponsors_sponsor_type[1] == 'Booth'
+  if ["Diamond", "Gold", "Platinum"].include?(sponsors_sponsor_type[1])
     Booth.seed(:conference_id, :sponsor_id) do |s|
       s.conference_id = sponsors_sponsor_type[3]
       s.sponsor_id = sponsor.id
