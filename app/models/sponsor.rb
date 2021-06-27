@@ -19,7 +19,7 @@ class Sponsor < ApplicationRecord
 
   def booth_sponsor?
     self.sponsor_types.each do |type|
-      if type.name == 'Booth'
+      if ["Diamond", "Gold", "Platinum"].include?(type.name)
         return true
       end
     end
