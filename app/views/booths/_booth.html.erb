@@ -60,6 +60,9 @@
         <iframe src="<%= vimeo.url %>" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
     </div>
+    <div class="col-12 mb-3">
+      <p><%= simple_format(h(auto_link(vimeo.text, html: { target: '_blank' }))) %></p>
+    </div>
   </div>
 <% end %>
 

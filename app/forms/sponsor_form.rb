@@ -7,7 +7,8 @@ class SponsorForm
                 :booth_published,
                 :sponsor_attachment_key_images,
                 :attachment_text,
-                :attachment_vimeo,
+                :attachment_vimeo_url,
+                :attachment_vimeo_description,
                 :attachment_zoom,
                 :attachment_miro,
                 :sponsor_attachment_pdfs
@@ -105,9 +106,9 @@ class SponsorForm
       end
 
       if sponsor.sponsor_attachment_vimeo.present?
-        sponsor.sponsor_attachment_vimeo.update!(url: attachment_vimeo)
+        sponsor.sponsor_attachment_vimeo.update!(url: attachment_vimeo_url, text: attachment_vimeo_description)
       else
-        vimeo = SponsorAttachmentVimeo.new(url: attachment_vimeo, sponsor_id: sponsor.id)
+        vimeo = SponsorAttachmentVimeo.new(url: attachment_vimeo_url, text: attachment_vimeo_description, sponsor_id: sponsor.id)
         vimeo.save!
       end
 
@@ -148,7 +149,8 @@ class SponsorForm
       description: sponsor.description,
       booth_published: sponsor.booth.present? && sponsor.booth.published.present? ? sponsor.booth.published : nil,
       attachment_text: sponsor.sponsor_attachment_text.present? ? sponsor.sponsor_attachment_text.text : '',
-      attachment_vimeo: sponsor.sponsor_attachment_vimeo.present? ? sponsor.sponsor_attachment_vimeo.url : '',
+      attachment_vimeo_url: sponsor.sponsor_attachment_vimeo.present? ? sponsor.sponsor_attachment_vimeo.url : '',
+      attachment_vimeo_description: sponsor.sponsor_attachment_vimeo.present? ? sponsor.sponsor_attachment_vimeo.text : '',
       attachment_zoom: sponsor.sponsor_attachment_zoom.present? ? sponsor.sponsor_attachment_zoom.url : '',
       attachment_miro: sponsor.sponsor_attachment_miro.present? ? sponsor.sponsor_attachment_miro.url : '',
       sponsor_attachment_key_images: sponsor_attachment_key_images,
