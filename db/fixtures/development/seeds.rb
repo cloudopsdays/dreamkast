@@ -208,7 +208,7 @@ Sponsor.seed(
   },
   {
     id: 2,
-    name: "F5ネットワークスジャパン合同会社",
+    name: "F5ネットワークスジャパン合同会社／NGINX事業部",
     abbr: "f5",
     conference_id: 1,
     url: "https://www.f5.com/ja_jp"
