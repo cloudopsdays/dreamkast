@@ -37,12 +37,6 @@ describe TalksController, type: :request do
           expect(response).to be_successful
           expect(response.body).not_to include "player.vimeo.com"
         end
-
-        it "doesn't includes slido iframe" do
-          get '/cndt2020/talks/1'
-          expect(response).to be_successful
-          expect(response.body).not_to include "sli.do"
-        end
       end
 
       context 'site opened' do
@@ -51,28 +45,10 @@ describe TalksController, type: :request do
           create(:cndt2020_opened)
         end
 
-        context 'talk is archived' do
-          before do
-            allow_any_instance_of(Talk).to receive(:archived?).and_return(true)
-          end
-
-          it "doesn't includes vimeo iframe" do
-            get '/cndt2020/talks/1'
-            expect(response).to be_successful
-            expect(response.body).not_to include "player.vimeo.com"
-          end
-        end
-
-        context 'talk is not archived' do
-          before do
-            allow_any_instance_of(Talk).to receive(:archived?).and_return(false)
-          end
-
-          it "doesn't includes vimeo iframe" do
-            get '/cndt2020/talks/1'
-            expect(response).to be_successful
-            expect(response.body).not_to include "player.vimeo.com"
-          end
+        it "doesn't includes vimeo iframe" do
+          get '/cndt2020/talks/1'
+          expect(response).to be_successful
+          expect(response.body).not_to include "player.vimeo.com"
         end
       end
 
@@ -82,28 +58,10 @@ describe TalksController, type: :request do
           create(:cndt2020_closed)
         end
 
-        describe 'talk is archived' do
-          before do
-            allow_any_instance_of(Talk).to receive(:archived?).and_return(true)
-          end
-
-          it "includes vimeo iframe" do
-            get '/cndt2020/talks/1'
-            expect(response).to be_successful
-            expect(response.body).to_not include "player.vimeo.com"
-          end
-        end
-
-        context 'talk is not archived' do
-          before do
-            allow_any_instance_of(Talk).to receive(:archived?).and_return(false)
-          end
-
-          it "doesn't includes vimeo iframe" do
-            get '/cndt2020/talks/1'
-            expect(response).to be_successful
-            expect(response.body).to_not include "player.vimeo.com"
-          end
+        it "doesn't includes vimeo iframe" do
+          get '/cndt2020/talks/1'
+          expect(response).to be_successful
+          expect(response.body).to_not include "player.vimeo.com"
         end
       end
 
@@ -113,28 +71,23 @@ describe TalksController, type: :request do
           create(:cndt2020_archived)
         end
 
-        context 'talk is archived' do
-          before do
-            allow_any_instance_of(Talk).to receive(:archived?).and_return(true)
-          end
+        it "includes vimeo iframe" do
+          get '/cndt2020/talks/1'
+          expect(response).to be_successful
+          expect(response.body).to include "player.vimeo.com"
+        end
+      end
 
-          it "includes vimeo iframe" do
-            get '/cndt2020/talks/1'
-            expect(response).to be_successful
-            expect(response.body).to include "player.vimeo.com"
-          end
+      context 'site is video_enabled' do
+        before do
+          Conference.destroy_all
+          create(:cndt2020_video_enabled)
         end
 
-        context 'talk is not archived' do
-          before do
-            allow_any_instance_of(Talk).to receive(:archived?).and_return(false)
-          end
-
-          it "doesn't includes vimeo iframe" do
-            get '/cndt2020/talks/1'
-            expect(response).to be_successful
-            expect(response.body).to_not include "player.vimeo.com"
-          end
+        it "doesn't includes vimeo iframe" do
+          get '/cndt2020/talks/1'
+          expect(response).to be_successful
+          expect(response.body).not_to include "player.vimeo.com"
         end
       end
     end
@@ -168,40 +121,10 @@ describe TalksController, type: :request do
             expect(response.body).to include talk2.title
           end
 
-          it "includes slido iframe if it has slido id" do
+          it "doesn't includes vimeo iframe" do
             get '/cndt2020/talks/1'
             expect(response).to be_successful
-            expect(response.body).to include "sli.do"
-          end
-
-          it "includes twitter iframe if it not have slido id" do
-            get '/cndt2020/talks/2'
-            expect(response).to be_successful
-            expect(response.body).to include "twitter-timeline"
-          end
-
-          context 'talk is archived' do
-            before do
-              allow_any_instance_of(Talk).to receive(:archived?).and_return(true)
-            end
-
-            it "includes vimeo iframe" do
-              get '/cndt2020/talks/1'
-              expect(response).to be_successful
-              expect(response.body).not_to include "player.vimeo.com"
-            end
-          end
-
-          context 'talk is not archived' do
-            before do
-              allow_any_instance_of(Talk).to receive(:archived?).and_return(false)
-            end
-
-            it "includes vimeo iframe" do
-              get '/cndt2020/talks/1'
-              expect(response).to be_successful
-              expect(response.body).not_to include "player.vimeo.com"
-            end
+            expect(response.body).not_to include "player.vimeo.com"
           end
         end
 
@@ -234,28 +157,10 @@ describe TalksController, type: :request do
             expect(response).to have_http_status '404'
           end
 
-          context 'talk is archived' do
-            before do
-              allow_any_instance_of(Talk).to receive(:archived?).and_return(true)
-            end
-
-            it "includes vimeo iframe" do
-              get '/cndt2020/talks/1'
-              expect(response).to be_successful
-              expect(response.body).to include "player.vimeo.com"
-            end
-          end
-
-          context 'talk is not archived' do
-            before do
-              allow_any_instance_of(Talk).to receive(:archived?).and_return(false)
-            end
-
-            it "includes vimeo iframe" do
-              get '/cndt2020/talks/1'
-              expect(response).to be_successful
-              expect(response.body).not_to include "player.vimeo.com"
-            end
+          it "includes vimeo iframe" do
+            get '/cndt2020/talks/1'
+            expect(response).to be_successful
+            expect(response.body).to include "player.vimeo.com"
           end
         end
 
@@ -288,28 +193,10 @@ describe TalksController, type: :request do
             expect(response).to have_http_status '404'
           end
 
-          context 'talk is archived' do
-            before do
-              allow_any_instance_of(Talk).to receive(:archived?).and_return(true)
-            end
-
-            it "includes vimeo iframe" do
-              get '/cndt2020/talks/1'
-              expect(response).to be_successful
-              expect(response.body).to include "player.vimeo.com"
-            end
-          end
-
-          context 'talk is not archived' do
-            before do
-              allow_any_instance_of(Talk).to receive(:archived?).and_return(false)
-            end
-
-            it "includes vimeo iframe" do
-              get '/cndt2020/talks/1'
-              expect(response).to be_successful
-              expect(response.body).not_to include "player.vimeo.com"
-            end
+          it "includes vimeo iframe" do
+            get '/cndt2020/talks/1'
+            expect(response).to be_successful
+            expect(response.body).to include "player.vimeo.com"
           end
         end
 
@@ -342,28 +229,28 @@ describe TalksController, type: :request do
             expect(response).to have_http_status '404'
           end
 
-          context 'talk is archived' do
-            before do
-              allow_any_instance_of(Talk).to receive(:archived?).and_return(true)
-            end
-
-            it "includes vimeo iframe" do
-              get '/cndt2020/talks/1'
-              expect(response).to be_successful
-              expect(response.body).to include "player.vimeo.com"
-            end
+          it "includes vimeo iframe" do
+            get '/cndt2020/talks/1'
+            expect(response).to be_successful
+            expect(response.body).to include "player.vimeo.com"
           end
+        end
 
-          context 'talk is not archived' do
-            before do
-              allow_any_instance_of(Talk).to receive(:archived?).and_return(false)
-            end
-
-            it "includes vimeo iframe" do
-              get '/cndt2020/talks/1'
-              expect(response).to be_successful
-              expect(response.body).not_to include "player.vimeo.com"
-            end
+        context 'site is video_enabled' do
+          before do
+            Conference.destroy_all
+            create(:cndt2020_video_enabled)
+            create(:cndo2021)
+            create(:alice)
+            create(:alice_cndo2021)
+            allow_any_instance_of(ActionDispatch::Request).to receive(:session).and_return(session)
+            allow_any_instance_of(Talk).to receive(:archived?).and_return(true)
+          end
+  
+          it "includes vimeo iframe" do
+            get '/cndt2020/talks/1'
+            expect(response).to be_successful
+            expect(response.body).to include "player.vimeo.com"
           end
         end
       end
