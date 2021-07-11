@@ -1,6 +1,6 @@
 <div class="container tracks">
   <div class="row">
-    <div id="main-pane" class="col-12 col-md-8">
+    <div id="main-pane" class="col-12">
       <div class="information">
         <h4>運営からのお知らせ</h4>
         <ul>
@@ -13,27 +13,48 @@
         </ul>
       </div>
 
-      <div id="social" class="row">
-        <div class="col-6 p-3">
-          <a id="twitter" href=<%=  "http://twitter.com/share?url=https://cloudopsdays.com/&related=@cloudopsdays&hashtags=#{@conference.abbr.upcase}" %> target="_blank" class="btn btn-outline-primary btn-lg btn-block">Twitterでシェア</a>
+      <div id="logo-carousel" class="carousel slide my-5" data-ride="carousel">
+        <div class="carousel-inner">
+          <% count = 1%>
+          <% @conference.sponsors.each_slice(3) do |sponsor_chunk| %>
+            <div class="carousel-item <%= "active" if count == 1 %>">
+              <div class="row">
+                <% sponsor_chunk.each do |sponsor| %>
+                  <% if sponsor.sponsor_attachment_logo_image.present? %>
+                    <div class="col-0 col-lg-4">
+                      <%= image_tag sponsor.sponsor_attachment_logo_image.url, class: "sponsor-logo" %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+            <% count = count + 1 %>
+          <% end %>
         </div>
       </div>
 
       <div id="registered-talk" class="talk accordion mt-3">
         <h4 class="">
+          <% if @conference.opened? || @conference.video_enabled? %>
+            聴講セッション(クリックで再生ページへ)
+          <% else %>
             聴講予定セッション
+          <% end%>
         </h4>
-        <div id="registered-talk-list">
+        <div id="registered-talk-list" class="row">
           <% @profile.talks.each do |talk| %>
-            <div class="category_difficulty">
-              <% if talk.talk_difficulty.present? && talk.talk_difficulty_id != 4 && talk.talk_category_id != 18 %>
-                <span class="difficulty difficulty_<%= talk_difficulty(talk).id %>"><%= talk_difficulty(talk).name %></span>
-              <% end %>
-              <% if talk.talk_category_id %>
-              <span class="difficulty category_<%= talk_category(talk).id %>"><%= talk_category(talk).name %></span>
-              <% end %>
+            <div class="col-12 col-lg-3 col-md-4 card-column py-3">
+              <a href="<%= talk_path(id: talk.id) %>">
+              <div class="card registered-talk-card">
+                <div class="avatar">
+                  <%= image_tag talk.speakers[0].avatar_or_dummy_url, :size => '90x90' %>
+                </div>
+                <div class="card-body">
+                  <h5><%= talk.title %></h5>
+                </div>
+              </div>
+              </a>
             </div>
-            <h5><%= link_to talk.title, talk_path(id: talk.id), class: "text-dark" %></h5>
           <% end %>
           <div class="col-12 text-center my-4">
               <%= button_to '聴講予定セッションを変更する', timetables_path, {method: :get, class: "btn btn-primary btn-xl inline" } %>
@@ -41,20 +62,12 @@
         </div>
       </div>
     </div>
-    <div id="sub-pane" class="col-12 col-md-4">
-      <div class="social">
-        <a class="twitter-timeline" data-height="600" href="https://twitter.com/cloudopsdays?ref_src=twsrc%5Etfw">Tweets by cloudopsdays</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-      </div>
-    </div>
   </div>
 
   <div class="row">
-    <% if @conference.opened? %>
-      <div class="col-12 mb-3 py-1 my-3 text-center booths-header">
-        <h4>↓ ブースにお立ち寄りください ↓</h4>
-      </div>
-
+    <% if @conference.opened? || @conference.video_enabled? %>
       <div class="col-12 mb-3">
+        <h4>ブース</h4>
         <%= render 'booth_section' %>
       </div>
     <% else %>
@@ -63,10 +76,8 @@
       </div>
     <% end %>
   </div>
-
 </div>
-<script>
-</script>
+
 
 <% @message_box = "セッション一覧から聴講予定セッションの登録・変更ができます。" %>
 <%= javascript_pack_tag 'tracks/waiting_channel.js' %>

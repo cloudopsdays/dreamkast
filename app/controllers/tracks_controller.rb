@@ -3,7 +3,11 @@ class TracksController < ApplicationController
   before_action :set_profile
 
   def index
-    @conference = Conference.includes(:talks).find_by(abbr: event_name)
+    @conference = Conference
+                  .includes(:talks)
+                  .includes(sponsor_types: {sponsors: :sponsor_attachment_logo_image})
+                  .order("sponsor_types.order ASC")
+                  .find_by(abbr: event_name)
     # TODO: cndo2021固有の処理をやめる
     if @conference.abbr == "cndo2021" && @conference.opened?
       redirect_to  '/cndo2021/ui/'
