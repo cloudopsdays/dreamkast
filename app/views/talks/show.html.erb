@@ -19,16 +19,11 @@
   </div>
   <div class="row my-3">
     <% if @current_user && (@conference.opened? || @conference.video_enabled?) %>
-        <div class="col-12 mb-3">
-          <h4>ブース</h4>
-          <%= render 'tracks/booth_section' %>
-        </div>
-      <% else %>
-        <div class="col-12">
-          <h4 class="text-center booths-header"><%= @conference.name %> is not opened.</h4>
-        </div>
-      <% end %>
-    </div>
+      <div class="col-12 mb-3">
+        <h4>ブース</h4>
+        <%= render 'tracks/booth_section' %>
+      </div>
+    <% end %>
   </div>
 </div>
 
