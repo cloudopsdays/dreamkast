@@ -12,6 +12,7 @@ class TalksController < ApplicationController
   def show
     @conference = Conference.find_by(abbr: event_name)
     @talk = Talk.find_by(id: params[:id], conference_id: conference.id)
+    @booths = Booth.where(conference_id: @conference.id, published: true)
     raise ActiveRecord::RecordNotFound unless @talk
   end
 

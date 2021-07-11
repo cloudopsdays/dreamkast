@@ -9,13 +9,26 @@
 <% end %>
 <% provide(:title, @talk.title) %>
 
-<div class="container">
+<div class="container tracks">
   <div class="row my-3">
 
     <div class="col-12 main-pane">
       <%= render 'talks/partial_show/col_main_pane', talk: @talk, conference: @conference %>
     </div>
 
+  </div>
+  <div class="row my-3">
+    <% if @current_user && (@conference.opened? || @conference.video_enabled?) %>
+        <div class="col-12 mb-3">
+          <h4>ブース</h4>
+          <%= render 'tracks/booth_section' %>
+        </div>
+      <% else %>
+        <div class="col-12">
+          <h4 class="text-center booths-header"><%= @conference.name %> is not opened.</h4>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
