@@ -13,6 +13,26 @@
         </ul>
       </div>
 
+      <div id="logo-carousel" class="carousel slide my-5" data-ride="carousel">
+        <div class="carousel-inner">
+          <% count = 1%>
+          <% @conference.sponsors.each_slice(3) do |sponsor_chunk| %>
+            <div class="carousel-item <%= "active" if count == 1 %>">
+              <div class="row">
+                <% sponsor_chunk.each do |sponsor| %>
+                  <% if sponsor.sponsor_attachment_logo_image.present? %>
+                    <div class="col-0 col-lg-4">
+                      <%= image_tag sponsor.sponsor_attachment_logo_image.url, class: "sponsor-logo" %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+            <% count = count + 1 %>
+          <% end %>
+        </div>
+      </div>
+
       <div id="registered-talk" class="talk accordion mt-3">
         <h4 class="">
           <% if @conference.opened? || @conference.video_enabled? %>
