@@ -32,6 +32,11 @@ class TracksController < ApplicationController
     @talk_categories = TalkCategory.all
     @talk_difficulties = TalkDifficulty.all
     @booths = Booth.where(conference_id: @conference.id, published: true)
+
+    @live_talks = @conference.talks
+                            .includes(:track, :speaker)
+                            .eager_load(:talk_category, :talk_difficulty)
+                            .where(show_on_timetable: true, conference_day_id: 2)
   end
 
   def reload

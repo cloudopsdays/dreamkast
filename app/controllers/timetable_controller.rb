@@ -9,8 +9,14 @@ class TimetableController < ApplicationController
   end
 
   def index
-    @conference = Conference.includes(conference_days: :talks).includes(talks: :track).includes(talks: :speakers).find_by(abbr: event_name)
-    @talks = @conference.talks.includes(:track, :speaker).eager_load(:talk_category, :talk_difficulty).where(show_on_timetable: true)
+    @conference = Conference.includes(conference_days: :talks)
+                            .includes(talks: :track)
+                            .includes(talks: :speakers)
+                            .find_by(abbr: event_name)
+    @talks = @conference.talks
+                        .includes(:track, :speaker)
+                        .eager_load(:talk_category, :talk_difficulty)
+                        .where(show_on_timetable: true, conference_day_id: 1) #CODT2021 hard coded
     @talk_categories = TalkCategory.where(conference_id: @conference.id)
     @talk_difficulties = TalkDifficulty.where(conference_id: @conference.id)
 
