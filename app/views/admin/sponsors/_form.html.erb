@@ -29,34 +29,27 @@
     </div>
 
     <h4>Booth: Vimeo</h4>
-    <div class="form-row form-group">
-      <div class="col-12 col-mb-6">
-        <% vimeo = @sponsor.sponsor_attachment_vimeo %>
-        <%= form.label :attachment_vimeo_url, "Vimeo embed url" %>
-        <%= form.text_field :attachment_vimeo_url, class: "form-control", id: "attachmentTextInputForm", rows: "3" %>
-        <% if vimeo.present? %>
-          <div class="movie-wrap">
-            <iframe src="<%= vimeo.url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="col-12 col-mb-6">
-        <%= form.label :attachment_vimeo_description, "Video Description" %>
-        <%= form.text_area :attachment_vimeo_description, class: "form-control", id: "attachmentTextInputForm", rows: "3" %>
-      </div>
-
+    <div class="vimeo-fields">
+      <%= form.fields_for :sponsor_attachment_vimeos do |vimeo| %>
+        <%=  render 'admin/sponsors/sponsor_attachment_vimeo_fields', f: vimeo %>
+      <% end %>
     </div>
+
+    <% if form.object.sponsor_attachment_vimeos.size >= 3 %>
+      <p><%= link_to_add_video_fields "Add Video", form, :sponsor_attachment_vimeos, class: 'add-vimeo btn btn-primary', style: "display: none" %></p>
+    <% else %>
+      <p><%= link_to_add_video_fields "Add Video", form, :sponsor_attachment_vimeos, class: 'add-vimeo btn btn-primary' %></p>
+    <% end %>
 
 
     <h4>Booth: PDFs</h4>
     <div class="pdf-fields">
       <%= form.fields_for :sponsor_attachment_pdfs do |a| %>
-        <%=  render 'admin/sponsors/sponsor_attachment_pdf_fields', :f => a%>
+        <%=  render 'admin/sponsors/sponsor_attachment_pdf_fields', :f => a %>
       <% end %>
     </div>
 
-    <% if form.object.sponsor_attachment_pdfs.size >= 3 %>
+    <% if form.object.sponsor_attachment_pdfs.size >= 6 %>
       <p><%= link_to_add_pdf_fields "Add PDF", form, :sponsor_attachment_pdfs, class: 'add-pdf btn btn-primary', style: "display: none" %></p>
     <% else %>
       <p><%= link_to_add_pdf_fields "Add PDF", form, :sponsor_attachment_pdfs, class: 'add-pdf btn btn-primary' %></p>

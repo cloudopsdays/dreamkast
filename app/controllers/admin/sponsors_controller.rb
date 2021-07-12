@@ -43,11 +43,10 @@ class Admin::SponsorsController < ApplicationController
     params.require(:sponsor).permit(:description,
                                     :booth_published,
                                     :attachment_text,
-                                    :attachment_vimeo_url,
-                                    :attachment_vimeo_description,
                                     :attachment_zoom,
                                     :attachment_miro,
                                     sponsor_attachment_key_images_attributes: [:id, :title, :file, :_destroy],
+                                    sponsor_attachment_vimeos_attributes: [:id, :url, :text, :_destroy],
                                     sponsor_attachment_pdfs_attributes: [:id, :title, :file, :_destroy])
   end
 end

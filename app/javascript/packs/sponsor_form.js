@@ -1,9 +1,30 @@
+$(document).on('click', '.add_vimeo_fields', function(event) {
+    var regexp, time;
+    time = new Date().getTime();
+    regexp = new RegExp($(this).data('id'), 'g');
+    $('.vimeo-fields').append($(this).data('fields').replace(regexp, time));
+    if ($('div:visible.vimeo-field').length >= 3) {
+        $('.add-vimeo').hide()
+    }
+    return event.preventDefault();
+})
+
+$(document).on('click', '.remove_vimeo_field', function(event) {
+    $(this).prev('input[type=hidden]').val('1');
+    $(this).closest('.vimeo-field').hide();
+    if ($('div:visible.vimeo-field').length < 3) {
+        $('.add-vimeo').show()
+    }
+    return event.preventDefault();
+});
+
+
 $(document).on('click', '.add_pdf_fields', function(event) {
     var regexp, time;
     time = new Date().getTime();
     regexp = new RegExp($(this).data('id'), 'g');
     $('.pdf-fields').append($(this).data('fields').replace(regexp, time));
-    if ($('div:visible.pdf-field').length >= 3) {
+    if ($('div:visible.pdf-field').length >= 6) {
         $('.add-pdf').hide()
     }
     return event.preventDefault();
@@ -12,7 +33,7 @@ $(document).on('click', '.add_pdf_fields', function(event) {
 $(document).on('click', '.remove_pdf_field', function(event) {
     $(this).prev('input[type=hidden]').val('1');
     $(this).closest('.pdf-field').hide();
-    if ($('div:visible.pdf-field').length < 3) {
+    if ($('div:visible.pdf-field').length < 6) {
         $('.add-pdf').show()
     }
     return event.preventDefault();

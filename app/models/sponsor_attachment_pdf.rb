@@ -1,7 +1,7 @@
 class SponsorAttachmentPdf < SponsorAttachment
   include SponsorAttachmentFileUploader::Attachment(:file)
 
-  MAX_POSTS_COUNT = 3
+  MAX_POSTS_COUNT = 6
 
   validate :posts_count_must_be_within_limit
 

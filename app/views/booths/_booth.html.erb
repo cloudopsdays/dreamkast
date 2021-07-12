@@ -52,17 +52,16 @@
 <% end %>
 
 
-<% if sponsor.sponsor_attachment_vimeo.present? %>
-  <% vimeo = sponsor.sponsor_attachment_vimeo %>
+<% if sponsor.sponsor_attachment_vimeos.size > 0 %>
   <div class="row mb-3">
-    <div class="col-12 mb-3 text-center">
-      <div class="movie-wrap">
-        <iframe src="<%= vimeo.url %>" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    <% sponsor.sponsor_attachment_vimeos.each do |vimeo| %>
+      <div class="col-12 mb-3 text-center">
+        <div class="movie-wrap">
+          <iframe src="<%= vimeo.url %>" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+        <p><%= simple_format(h(auto_link(vimeo.text, html: { target: '_blank' }))) %></p>
       </div>
-    </div>
-    <div class="col-12 mb-3">
-      <p><%= simple_format(h(auto_link(vimeo.text, html: { target: '_blank' }))) %></p>
-    </div>
+    <% end %>
   </div>
 <% end %>
 
