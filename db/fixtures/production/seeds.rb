@@ -282,6 +282,13 @@ Sponsor.seed(
     conference_id: 1,
     url: "https://ja.pagerduty.com/"
   },
+  {
+    id: 18,
+    name: "OpenInfra Foundation",
+    abbr: "openinfra",
+    conference_id: 1,
+    url: "https://openinfra.dev/"
+  },
 )
 
 SponsorType.seed(
@@ -330,6 +337,7 @@ SponsorType.seed(
   [15, 'Gold', 'intel', 1],
   [16, 'Gold', 'datadog', 1],
   [17, 'Platinum', 'pagerduty', 1],
+  [18, 'Gold', 'openinfra', 1],
 ].each do |sponsors_sponsor_type|
   id = sponsors_sponsor_type[0]
   sponsor_type = SponsorType.find_by(name: sponsors_sponsor_type[1], conference_id: sponsors_sponsor_type[3])
@@ -361,6 +369,7 @@ end
   [15, 'intel', 'sponsors/codt2021/intel.png', 1],
   [16, 'datadog', 'sponsors/codt2021/datadog.png', 1],
   [17, 'pagerduty', 'sponsors/codt2021/pagerduty.png', 1],
+  [18, 'openinfra', 'sponsors/codt2021/openinfra.png', 1],
 ].each do |logo|
   SponsorAttachment.seed(
     { id: logo[0],
