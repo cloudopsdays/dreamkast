@@ -14,22 +14,29 @@
         <%= render 'talks/partial_show/talk_video_block', talk: talk %>
       <% end %>
 
-      <p><%= simple_format talk.abstract %></p>
+      <div class="row">
+        <div class="col-12 col-md-9">
+          <p><%= simple_format talk.abstract %></p>
+          <% talk.speakers.each do |speaker| %>
+            <div class="row py-3">
+              <%= render 'talks/partial_show/col_speaker_avatar', speaker: speaker %>
+              <%= render 'talks/partial_show/col_speaker', speaker: speaker %>
+            </div>
+          <% end %>
 
-      <% talk.speakers.each do |speaker| %>
-        <div class="row py-3">
-          <%= render 'talks/partial_show/col_speaker_avatar', speaker: speaker %>
-          <%= render 'talks/partial_show/col_speaker', speaker: speaker %>
+          <% if talk.document_url.present? %>
+            <div class="col-12 my-3 pt-2" style="border-top: 1px solid #CCC">
+              <ul>
+                <li><a href="<%= talk.document_url %>" target="_blank">発表資料</a></li>
+              </ul>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-
-      <% if talk.document_url.present? %>
-        <div class="col-12 my-3 pt-2" style="border-top: 1px solid #CCC">
-          <ul>
-            <li><a href="<%= talk.document_url %>" target="_blank">発表資料</a></li>
-          </ul>
+        <div class="col-12 col-md-3">
+          <%= render 'talks/partial_show/col_sub_pane' %>
         </div>
-      <% end %>
+      </div>
+      
 
       <div class="col-12 text-center my-4">
         <%= button_to 'セッション一覧', timetables_path, {method: :get, class: "btn btn-primary btn-xl inline" } %>
