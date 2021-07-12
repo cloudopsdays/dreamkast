@@ -56,7 +56,7 @@
       <% end %>
     </div>
 
-    <% if form.object.sponsor_attachment_pdfs.size >= 3 %>
+    <% if form.object.sponsor_attachment_pdfs.size >= 6 %>
       <p><%= link_to_add_pdf_fields "Add PDF", form, :sponsor_attachment_pdfs, class: 'add-pdf btn btn-primary', style: "display: none" %></p>
     <% else %>
       <p><%= link_to_add_pdf_fields "Add PDF", form, :sponsor_attachment_pdfs, class: 'add-pdf btn btn-primary' %></p>
