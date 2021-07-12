@@ -317,6 +317,13 @@ Sponsor.seed(
     abbr: "pagerduty",
     conference_id: 1,
     url: "https://ja.pagerduty.com/"
+  }, 
+  {
+    id: 18,
+    name: "OpenInfra Foundation",
+    abbr: "openinfra",
+    conference_id: 1,
+    url: "https://openinfra.dev/"
   },
 )
 
@@ -366,6 +373,7 @@ SponsorType.seed(
   [15, 'Gold', 'intel', 1],
   [16, 'Gold', 'datadog', 1],
   [17, 'Platinum', 'pagerduty', 1],
+  [18, 'Gold', 'openinfra', 1],
 ].each do |sponsors_sponsor_type|
   id = sponsors_sponsor_type[0]
   sponsor_type = SponsorType.find_by(name: sponsors_sponsor_type[1], conference_id: sponsors_sponsor_type[3])
@@ -397,6 +405,7 @@ end
   [15, 'intel', 'sponsors/codt2021/intel.png', 1],
   [16, 'datadog', 'sponsors/codt2021/datadog.png', 1],
   [17, 'pagerduty', 'sponsors/codt2021/pagerduty.png', 1],
+  [18, 'openinfra', 'sponsors/codt2021/openinfra.png', 1],
 ].each do |logo|
   SponsorAttachment.seed(
     { id: logo[0],
@@ -424,28 +433,28 @@ uploaded_key_image_2 = uploader.upload(key_image_2)
 
 
 SponsorAttachment.seed(
-  { id: 7,
+  { id: 107,
     sponsor_id: 1,
     type: 'SponsorAttachmentText',
     text: DUMMY_TEXT
   },
-  { id: 8,
+  { id: 108,
     sponsor_id: 1,
     type: 'SponsorAttachmentPdf',
     title: 'ダミープレゼンテーション',
     file_data: uploaded_pdf.to_json
   },
-  { id: 9,
+  { id: 109,
     sponsor_id: 1,
     type: 'SponsorAttachmentVimeo',
     url: 'https://player.vimeo.com/video/442956490'
   },
-  { id: 10,
+  { id: 110,
     sponsor_id: 1,
     type: 'SponsorAttachmentKeyImage',
     file_data: uploaded_key_image_1.to_json
   },
-  { id: 11,
+  { id: 111,
     sponsor_id: 1,
     type: 'SponsorAttachmentKeyImage',
     file_data: uploaded_key_image_2.to_json
