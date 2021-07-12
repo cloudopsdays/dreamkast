@@ -433,28 +433,28 @@ uploaded_key_image_2 = uploader.upload(key_image_2)
 
 
 SponsorAttachment.seed(
-  { id: 7,
+  { id: 107,
     sponsor_id: 1,
     type: 'SponsorAttachmentText',
     text: DUMMY_TEXT
   },
-  { id: 8,
+  { id: 108,
     sponsor_id: 1,
     type: 'SponsorAttachmentPdf',
     title: 'ダミープレゼンテーション',
     file_data: uploaded_pdf.to_json
   },
-  { id: 9,
+  { id: 109,
     sponsor_id: 1,
     type: 'SponsorAttachmentVimeo',
     url: 'https://player.vimeo.com/video/442956490'
   },
-  { id: 10,
+  { id: 110,
     sponsor_id: 1,
     type: 'SponsorAttachmentKeyImage',
     file_data: uploaded_key_image_1.to_json
   },
-  { id: 11,
+  { id: 111,
     sponsor_id: 1,
     type: 'SponsorAttachmentKeyImage',
     file_data: uploaded_key_image_2.to_json
