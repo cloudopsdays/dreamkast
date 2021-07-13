@@ -31,15 +31,19 @@
               </ul>
             </div>
           <% end %>
+          <div class="row">
+            <div class="col-12 text-center my-4">
+              <% unless @current_user %>
+              <%= button_to '動画を視聴する', '/auth/auth0', {method: :post, class: "btn btn-primary btn-xl inline" } %>
+              <br/>
+              <% end %>
+              <%= button_to 'セッション一覧', timetables_path, {method: :get, class: "btn btn-secondary btn-xl inline" } %>
+            </div>
+          </div>
         </div>
         <div class="col-12 col-md-3">
           <%= render 'talks/partial_show/col_sub_pane' %>
         </div>
-      </div>
-      
-
-      <div class="col-12 text-center my-4">
-        <%= button_to 'セッション一覧', timetables_path, {method: :get, class: "btn btn-primary btn-xl inline" } %>
       </div>
     </div>
   </div>
