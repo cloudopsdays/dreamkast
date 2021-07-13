@@ -1,17 +1,25 @@
-<div class="container">
+<div class="container tracks">
   <h1 class="my-3 text-center">ブース</h1>
   <div class="row">
     <% if @conference.opened? || @conference.video_enabled? %>
-      <% @booths.each do |booth| %>
-        <div class="col-12 col-md-4 my-3 text-center">
-          <% if booth.published && booth.sponsor.sponsor_attachment_logo_image.present? %>
-            <%= link_to booth_path(id: booth.id) do %>
-              <%= image_tag booth.sponsor.sponsor_attachment_logo_image.url, class: "sponsor-logo" %>
-              <%= booth.sponsor.name %>
+      <div class="col-12">
+      <% @conference.sponsor_types.each do |sponsor_type| %>
+        <% next unless ["Diamond", "Gold", "Platinum"].include?(sponsor_type.name) %>
+        <h3 class="text-black mt-0"><%= sponsor_type.name %></h3>
+        <hr class="divider primary my-4" />
+        <div class="row justify-content-md-center mb-5">
+          <% sponsor_type.sponsors.each do |sponsor| %>
+            <% if sponsor.booth_sponsor? && sponsor.booth.published? &&sponsor.sponsor_attachment_logo_image.present? %>
+              <div class="<%= sponsor_logo_class(sponsor_type) %>">
+                <a href="<%= booth_path(id: sponsor.booth.id) %>">
+                  <%= image_tag sponsor.sponsor_attachment_logo_image.url, class: "sponsor-logo" %>
+                </a>
+              </div>
             <% end %>
           <% end %>
         </div>
       <% end %>
+      </div>
     <% else %>
       <%= @conference.name %> is not opened.
     <% end %>
