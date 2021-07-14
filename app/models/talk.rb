@@ -6,7 +6,7 @@ class Talk < ApplicationRecord
   belongs_to :track, optional: true
 
   has_one :video_registration, dependent: :destroy
-  has_one :video, dependent: :destroy
+  has_one :video
   belongs_to :talk_time, optional: true
   has_many :talks_speakers
   has_many :registered_talks
