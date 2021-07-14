@@ -58,7 +58,9 @@
               <a href="<%= talk_path(id: talk.id) %>">
               <div class="card registered-talk-card">
                 <div class="avatar">
-                  <%= image_tag talk.speakers[0].avatar_or_dummy_url, :size => '90x90' %>
+                  <% unless talk.speakers[0].blank? %>
+                    <%= image_tag talk.speakers[0].avatar_or_dummy_url, :size => '90x90' %>
+                  <% end %>
                 </div>
                 <div class="card-body">
                   <h5><%= talk.title %></h5>
