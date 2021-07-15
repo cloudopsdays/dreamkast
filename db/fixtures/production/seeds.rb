@@ -3,9 +3,6 @@ Conference.seed(
     id: 1,
     name: "Cloud Operator Days Tokyo 2021",
     abbr: "codt2021",
-    status: 0, # registered
-    speaker_entry: 0,
-    attendee_entry: 0,
     theme: "運用者に光を",
     copyright: '© Cloud Operator Days Tokyo 2021',
     privacy_policy: File.read(File.join(Rails.root, 'db/fixtures/production/privacy_policy.md')),
