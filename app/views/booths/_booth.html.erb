@@ -104,7 +104,7 @@
 <% end %>
 <script>
   window.booth = {};
-  window.booth.name = "<%= sponsor.name %>";
+  window.booth.name = "<%= sponsor.name.gsub(/(\r\n|\n)/,"") %>";
   window.booth.id = "<%= sponsor.id %>";
 </script>
 <%= javascript_pack_tag 'booth.js' %>
