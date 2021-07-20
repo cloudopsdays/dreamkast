@@ -325,6 +325,13 @@ Sponsor.seed(
     conference_id: 1,
     url: "https://openinfra.dev/"
   },
+  {
+    id: 19,
+    name: "日本ヒューレット・パッカード合同会社",
+    abbr: "hpe",
+    conference_id: 1,
+    url: "https://www.hpe.com/jp/ja/home.html"
+  },
 )
 
 SponsorType.seed(
@@ -374,6 +381,7 @@ SponsorType.seed(
   [16, 'Gold', 'datadog', 1],
   [17, 'Platinum', 'pagerduty', 1],
   [18, 'Gold', 'openinfra', 1],
+  [19, 'Silver', 'hpe', 1],
 ].each do |sponsors_sponsor_type|
   id = sponsors_sponsor_type[0]
   sponsor_type = SponsorType.find_by(name: sponsors_sponsor_type[1], conference_id: sponsors_sponsor_type[3])
@@ -406,6 +414,7 @@ end
   [16, 'datadog', 'sponsors/codt2021/datadog.png', 1],
   [17, 'pagerduty', 'sponsors/codt2021/pagerduty.png', 1],
   [18, 'openinfra', 'sponsors/codt2021/openinfra.png', 1],
+  [19, 'hpe', 'sponsors/codt2021/hpe.png', 1],
 ].each do |logo|
   SponsorAttachment.seed(
     { id: logo[0],
