@@ -16,7 +16,8 @@ EOS
 )
 
 ConferenceDay.seed(
-  {id: 1, date: "2021-08-27", start_time: "12:00", end_time: "20:00", conference_id: 1, internal: false},
+  {id: 1, date: "2021-07-14", start_time: "12:00", end_time: "20:00", conference_id: 1, internal: false},
+  {id: 2, date: "2021-08-27", start_time: "13:00", end_time: "17:10", conference_id: 1, internal: true},
 )
 
 

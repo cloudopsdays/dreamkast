@@ -61,7 +61,7 @@
             <td><ul class="p-0"><% talk.speakers.each do |speaker| %><li class="speaker"><%= speaker.name %></li><% end %></ul></td>
             <td>
               <h5><%= talk.title %></h5>
-              <p class="abstract"><%= talk.abstract[0..30] %></p>
+              <p class="abstract"><%= talk.abstract[0..30] if talk.abstract.present? %></p>
             </td>
             <td><%= talk.track.present? ? talk.track.name : "" %></td>
             <td>
