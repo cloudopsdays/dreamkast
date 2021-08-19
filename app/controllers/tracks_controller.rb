@@ -8,9 +8,8 @@ class TracksController < ApplicationController
                   .includes(sponsor_types: {sponsors: :sponsor_attachment_logo_image})
                   .order("sponsor_types.order ASC")
                   .find_by(abbr: event_name)
-    # TODO: cndo2021固有の処理をやめる
-    if @conference.abbr == "cndo2021" && @conference.opened?
-      redirect_to  '/cndo2021/ui/'
+    if @conference.abbr != "cndt2020" && @conference.opened?
+      redirect_to  "/#{params[:event]}/ui/"
     end
     @current = Video.on_air
     @tracks = Track.all
