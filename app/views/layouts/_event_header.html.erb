@@ -16,7 +16,7 @@
         <% unless event_name.nil? %>
           <% if @conference && (@conference.registered? || @conference.opened? || @conference.video_enabled? ) && @conference.attendee_entry_enabled? %>
             <% if logged_in? && @profile.present? %>
-              <li class="nav-item"><%= link_to "ダッシュボード", dashboard_path, class: "nav-link js-scroll-trigger" %></li>
+              <li class="nav-item"><%= link_to "ライブ", dashboard_path, class: "nav-link js-scroll-trigger" %></li>
             <% end %>
           <% end %>
           <% unless controller_name == "profiles" && (action_name == "new" || action_name == "create") %>
