@@ -114,4 +114,3 @@ $ bundle exec rails db:seed
 $ env ECR_REGISTRY=public.ecr.aws/z5v6i5y3 ECR_REPOSITORY=dreamkast-ecs DOCKER_BUILDKIT=1 AWS_ACCESS_KEY_ID=XXXXXXXXXXXXXX AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXX \
   envchain codt bash ./build-container.sh IMAGE_NAME $(git rev-parse HEAD)
 ```
-
